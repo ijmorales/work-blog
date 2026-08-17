@@ -277,6 +277,146 @@ article header time {
   border-top: 1px solid var(--rule);
 }
 
+/* ------------------------------------------------- long form post furniture */
+
+.standfirst {
+  font-size: 1.12rem;
+  color: var(--muted);
+}
+
+/* A numbered step. The number is furniture, so it stays small and mono. */
+section.step {
+  margin-top: 2.8rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--rule);
+}
+
+section.step .num {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  margin: 0 0 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+section.step h2 { margin-top: 0; }
+
+/* An uppercase mono label above a block. */
+.step-body h3 {
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 400;
+  margin: 1.6rem 0 0.5rem;
+}
+
+/* A prompt I actually typed, quoted verbatim as code. */
+pre.prompt {
+  border-left: 2px solid var(--accent);
+}
+
+/* A real example from a session: date chip, the prompt, then what it teaches. */
+.example {
+  margin: 1.3rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule);
+}
+
+.example .chip {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--faint);
+  margin-bottom: 0.35rem;
+}
+
+.example q { font-style: italic; }
+
+.example .tail {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* Done means: how you know the step is finished. */
+.done, .warnbox {
+  margin: 1.3rem 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  background: var(--sunken);
+  font-size: 0.97rem;
+}
+
+.done b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 400;
+  margin-bottom: 0.2rem;
+}
+
+.card {
+  margin: 1.6rem 0;
+  padding: 1.3rem 1.5rem;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+}
+
+.card h3 { margin-top: 0; }
+
+.card ol { margin: 0; padding-left: 1.3rem; }
+
+/* Tables scroll inside themselves so the page never scrolls sideways. */
+.table-scroll { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.94rem;
+  margin: 1.3rem 0;
+}
+
+th, td {
+  text-align: left;
+  padding: 0.5rem 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+
+th {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--faint);
+  font-weight: 400;
+}
+
+figcaption .src {
+  display: block;
+  margin-top: 0.25rem;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--faint);
+}
+
+/* One diagram per theme, swapped with the media query, no JS. */
+.fig-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  .fig-light { display: none; }
+  .fig-dark { display: block; }
+}
+
 @media (max-width: 460px) {
   ul.posts li { grid-template-columns: 1fr; }
   ul.posts time { padding-top: 0; }
