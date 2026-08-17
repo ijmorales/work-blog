@@ -1,0 +1,284 @@
+/* work.ignaciomorales.ar
+ *
+ * One stylesheet, no build step, no JS, no webfonts, no tracking.
+ * Decisions and where they come from are in README.md.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  --ground: #fbf9f5;
+  --ink: #1e1d1b;
+  --muted: #6b6660;
+  --faint: #97918a;
+  --rule: #e4dfd6;
+  --sunken: #f3f0e9;
+  --link: #1e1d1b;
+  --accent: #1f6f63;
+
+  --serif: Charter, "Iowan Old Style", Palatino, Georgia, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground: #14140f;
+    --ink: #e7e4dc;
+    --muted: #a09a90;
+    --faint: #6f6a62;
+    --rule: #2c2b26;
+    --sunken: #1c1c17;
+    --link: #e7e4dc;
+    --accent: #6bbfae;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font: 100%/1.7 var(--serif);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 2.625rem 1.3125rem 5rem;
+  background: var(--ground);
+  color: var(--ink);
+}
+
+/* ---------------------------------------------------------------- chrome */
+
+.wordmark {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.tagline {
+  font-family: var(--sans);
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin: 0.4rem 0 0;
+}
+
+header.site {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 3rem;
+}
+
+footer.site {
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  margin-top: 4rem;
+  padding-top: 1rem;
+}
+
+footer.site a { color: var(--muted); }
+
+/* ------------------------------------------------------------------ text */
+
+h1 {
+  font-size: 1.85rem;
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  font-weight: 600;
+  text-wrap: balance;
+  margin: 0 0 0.4rem;
+  scroll-margin-top: 2rem;
+}
+
+h2 {
+  font-size: 1.3rem;
+  line-height: 1.3;
+  font-weight: 600;
+  margin: 2.4rem 0 0.6rem;
+  text-wrap: balance;
+  scroll-margin-top: 2rem;
+}
+
+h3 {
+  font-size: 1.08rem;
+  font-weight: 600;
+  margin: 1.8rem 0 0.4rem;
+  scroll-margin-top: 2rem;
+}
+
+p, ul, ol { margin: 0 0 1.15rem; }
+
+ul, ol { padding-left: 1.3rem; }
+
+li { margin-bottom: 0.3rem; }
+
+/* Prose links keep the body colour and carry an accent underline. One accent,
+ * no link blue, so a paragraph full of links still reads as a paragraph. */
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+/* Structural links carry no underline: the wordmark and the index titles. */
+.wordmark,
+ul.posts a,
+footer.site a {
+  text-decoration: none;
+}
+
+ul.posts a:hover,
+footer.site a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 3px;
+}
+
+strong { font-weight: 650; }
+
+blockquote {
+  margin: 1.4rem 0;
+  padding-left: 1.1rem;
+  border-left: 2px solid var(--rule);
+  color: var(--muted);
+}
+
+hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.6rem 0;
+}
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+figure { margin: 1.8rem 0; }
+
+figcaption {
+  font-family: var(--sans);
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+}
+
+/* ------------------------------------------------------------------ code */
+
+code {
+  font-family: var(--mono);
+  font-size: 0.86em;
+  background: var(--sunken);
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  padding: 0 0.25em;
+  text-decoration: none;
+}
+
+pre {
+  font-family: var(--mono);
+  font-size: 0.82rem;
+  line-height: 1.55;
+  background: var(--sunken);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  margin: 0 0 1.3rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1em;
+}
+
+/* ----------------------------------------------------------------- index */
+
+.year {
+  font-family: var(--mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: var(--faint);
+  font-weight: 400;
+  margin: 2.4rem 0 0.7rem;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.35rem;
+}
+
+ul.posts {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* One row per post: mono date, bold title, one hand-written sentence under it.
+ * The sentence aligns with the title, never with the date. */
+ul.posts li {
+  display: grid;
+  grid-template-columns: 3.6rem 1fr;
+  gap: 0.1rem 0.9rem;
+  margin-bottom: 1.1rem;
+}
+
+ul.posts time {
+  grid-column: 1;
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+  font-variant-numeric: tabular-nums;
+  padding-top: 0.28rem;
+}
+
+ul.posts a {
+  grid-column: 2;
+  font-weight: 600;
+}
+
+ul.posts p {
+  grid-column: 2;
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.97rem;
+}
+
+/* ------------------------------------------------------------------ post */
+
+article header {
+  margin-bottom: 2.2rem;
+}
+
+article header time {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--faint);
+}
+
+.post-nav {
+  font-family: var(--sans);
+  font-size: 0.88rem;
+  margin-top: 3rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+}
+
+@media (max-width: 460px) {
+  ul.posts li { grid-template-columns: 1fr; }
+  ul.posts time { padding-top: 0; }
+  ul.posts a, ul.posts p { grid-column: 1; }
+}
