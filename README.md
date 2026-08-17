@@ -18,7 +18,8 @@ public/
 1. `cp public/posts/hello-world.html public/posts/<slug>.html` and write it.
 2. Add its row to the top of the list in `index.html`. Keep newest first.
 3. Add its `<item>` to the top of the items in `feed.xml`. Match the `guid` to the URL.
-4. Commit and push to `main`. Coolify redeploys on the webhook.
+4. Commit and push to `main`. A GitHub push webhook tells Coolify to redeploy.
+   To deploy by hand instead: `./bin/coolify deploy work-blog` from `nmr-infrastructure`.
 
 URLs are extensionless: `posts/hello-world.html` serves at `/posts/hello-world`.
 That comes from `try_files $uri $uri.html $uri/index.html` in `nginx.conf`.
