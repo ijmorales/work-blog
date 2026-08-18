@@ -6,6 +6,8 @@ slug: how-i-build-software
 ---
 Since Claude Code became a thing in my day to day around June 2025, my workflow has gone through many changes on a monthly basis.
 
+![One loop per feature: ramble, frame, shape, implement, review, with human steering by voice](/img/workflow-loop.png)
+
 ## 0. The mental model
 
 Mental models are a really simple thing: how you represent reality in your mind. How you, essentially, carve the important things out of a problem and ignore the redundant parts.
@@ -22,9 +24,9 @@ I start every project by using voice mode either directly in Claude Code or thro
 
 Voice is much quicker than typing and has the advantage of letting your hands (and legs) free to ramble across the room with your AirPods on.
 
-Then I sent that transcription to Claude Code without any edits with a prompt like “Here’s my ramble about XYZ, try organizing my thoughts and craft a few questions to pull some threads: [Transcript].”
+Then I send that transcription to Claude Code without any edits with a prompt like “Here’s my ramble about XYZ, try organizing my thoughts and craft a few questions to pull some threads: [Transcript].”
 
-I read Claude questions, ramble a few more minutes, sometimes I stop and search for something on the Internet, etc.
+I read Claude's questions, ramble a few more minutes, sometimes I stop and search for something on the Internet, etc.
 
 Let’s say, to put up an example, I’m rambling about how to create an MCP over my API to provide to my clients. In the same rambling session I can touch many different topics such as: pricing, OAuth, LLM clients, tools surface, agentic tools, observability, auditability, how I should deploy it, etc. **The important thing in rambling is crafting the questions rather than the answers.**
 
@@ -35,280 +37,90 @@ When tackling long projects I like to create my worktrees upfront. Worktrees are
 
 I usually just ask Claude "Create a folder in my ~/Workspace for project XYZ, start setting up the worktrees for the different repositories involved, move my RAMBLING.md file as well.".
 
-Worktrees are cool because you can have many different copies of your repositories and work in many branches at the same time while you wait other agents to finish.
+Worktrees are cool because you can have many different copies of your repositories and work in many branches at the same time while you wait for other agents to finish.
 
-## 3. Research
+## 3. Framing
 
-At this point, I know what the problem looks like and I've identified the different scopes of work I have to do. While I fidget with the PRD in my main agent I tell Claude to go inspect the whole codebase and make a RESEARCH.md file with all the relevant code pieces it found, how the codebase is structured, how tests work, how code is deployed, etc.
+Framing is a step of the Shape Up methodology introduced by Ryan Singer where you work around a problem to frame it under your organization and business reality. You somewhat bend the problem to your current mental model, so to speak.
 
-After Claude finishes a new RESEARCH.MD is saved. This file is usually correct because LLMs are really good at documenting and you probably don't need to read it. I tipically just skim it to get my mind up to date or when I'm working on a new codebase.
+![Framing narrows the problem, shaping opens multiple paths to a solution](/img/framing-vs-shaping.png)
 
-## 4. Planning
+It differs from shaping (or planning) in the sense that it focuses heavily on the problem, it narrows it down.
 
-This is the big piece, at least when working with complex codebases. When you are 
+I love doing this step with AI and voice. I base it on the RAMBLING.md and start working with Claude to understand slices, subproblems, constraints, bigger problems, and so on.
 
-## Rambling savepoints and a word of caution
+When I finish this step I will have a PRD.md.
 
-After a few turns at this mechanic, I ask Claude to create a dump of everything that we discussed in a MD file and a Claude HTML artifact. Why both and what do I use them for? MDs are like savepoints for Claude, but I will rarely read them because LLMs prose is really cumbersome and verbose, they are useful mostly for getting Claude up to speed in follow-up conversations on the same topic. And HTML artifacts are a good way of sharing some parts of your mental model updates with your team.
+## 4. Shaping
 
-  
+Shaping is just defining a solution to the problem you framed, with a very good level of detail.
 
-Imagine something worse than having to read all the MD files your LLM generates: reading the MD files that the LLM of someone else generated. Remember that keeping your mental model aligned with the rest of your team is one of your key responsibilities and if you start sharing all nonsensical MD artifacts everyone will stop paying attention to your updates after a while.
+At this point, I spend most of the time. I go back and forth with Claude brainstorming solutions to the problem framed, considering its slices, finding which slices make sense to ship first. Trying to find something "tiny".
 
-  
+If you want to ship a feature you have to be the one that understands it end to end. So spend time at this phase. Think of this phase as developing the new mental model around your business problems, your codebase and architecture.
 
-Or to say it in other words: [Don’t make me talk to your chatbot](https://raymyers.org/post/dont-make-me-talk-to-your-chatbot/).
+### Level of detail
 
-  
+I like my PLAN.md to be to the diff level. I like to see program design as well as UI design exactly before I even start building it. I will usually tell CLAUDE.md to work on prototypes for the UI, give me different options, and go back and forth until the plan has what I exactly want.
 
-## Research or how to shape rambling
+### Vertical slices
 
-Congratulations! After your first rambling session you have made progress and moved to the point where you have discovered a lot of things you did not know about the problem and its constraints. You now know what you don’t know.
+I like to think of my work like vertical slices or phases. Things I can ship in units without having to ship the whole solution at once. I use Claude to think and design these phases.
 
-  
+![A vertical slice cuts through front end and back end so something works end to end](/img/vertical-slice.png)
 
-Now, the next step is to start mapping out the existing shape of the system, its pieces, and start thinking of how new pieces of information and functionality will come to life to solve the problem.
+### Sharing with the team
 
-  
+At this point, if you are working on something complex enough, you sometimes will have to take some decisions that will impact the design of the codebase, architecture or data in a way that you need some type of consensus and debate around it.
 
-At this point, I just open a new Claude session, reference the old MD rambling savepoint and tell Claude to research the existing codebase and find which pieces of functionality are there and which pieces aren't. I usually prompt this step by voice but you can write too ([Dex research skill is great for this](https://github.com/humanlayer/humanlayer/blob/main/.claude/commands/research_codebase.md)).
+Invest 20 or 30 minutes putting together a brief RFC, hand-written, to share with your team. They will appreciate it more than a PLAN.md generated by an LLM.
 
-  
-The goal at this point is to have Claude generate another important piece of context and save it to an MD file. I also ask it to provide an HTML artifact with the pieces of the codebase I need to know.
+### Testing
 
-  
+It is really important that you include in your plans how you want tests to be done, what E2E should be done, what's the evidence that should be present, which test harnesses might be developed and so on. Give Claude a way of testing its own work.
 
-Following the MCP example, at this point I will get a list of all the API operations my codebase allows, how authentication and authorization is currently handled, what failure modes and error handling are implemented, and so on. 
+## 5. Implementation
 
-  
+At this point I have my PLAN.md sorted out with phases, program design, UI design and architectural changes.
 
-I will read the artifact to update my mental model on what’s currently implemented. What’s the current state of the system? This is really key. Most of the time, to know the next step we need to visualize the transition between point A to point B.
+I typically spawn a new session, point Claude to the plan and instruct it to work over the first phase using subagents. This tends to be a long session spanning maybe an hour or more if heavy E2E is needed.
 
-  
+### Isolated envs
 
-Now your mental model is ready for an update, but nothing has changed yet. 
+I do all my development locally on a Macbook Pro M5 and it is powerful enough to house 3 or 4 parallel complex features running each one with its own logical PSQL and Redis in Docker container plus webservers and so on.
 
-## Beware of the rambling monster
+### YOLO mode
 
-A classic rookie mistake at this point would be taking the ramble and prompting Claude to “/goal Solve this problem, make no mistakes and make sure tests pass”. YAGNI assured. 
+To leverage AI you can't be there accepting every action. The industry standard nowadays is using Auto mode which is a safer approach to YOLO mode where you have an adversarial classifier agent that inspects all actions and detects harmful ones.
 
-  
+Taking a little bit of risk is really worth it. But if you need an extra step, different harnesses let you use different sandboxing solutions. I like Claude Code sandbox because it is easy to set up and gives you an extra layer of protection.
 
-Even if Claude nails the problem, you will doubt at the code review step or ship it to production without looking at the code. Either option is awful. Remember you cannot ship things fast until you learn how to understand things fast.
+### Review
 
-## Now we are talking: plan time
+When phase 0 is built I will take a look at evidence. See videos of the feature working recorded by the agent. Then, I start looking at the code to spot architectural or program design errors. I can tolerate verbose functions or skip over individual methods that I don't like.
 
-You now understand the problem and have the context of the current state of the system in your brain. The next step is to start chunking the things you have to change and build into groups or phases with nested levels of abstraction.
+I like to spin up my IDE with the code freshly written and turn on voice transcription to record my review without writing. I just point out things I don't like and direct Claude how to fix it. I prefer to do this in a fresh or compacted session.
 
-  
+If the solution is far from being shippable then I will ask Claude to create a phase + 1 section in the plan where we fix phase 0. I repeat steps 4 and 5 until I like it.
 
-At this point, I start a new session with Claude and reference the research and rambling MD savepoints. I tell Claude to give me a high level overview of the components.
+## 6. Code review
 
-  
+Everyone in the team is generating a lot more code, so code reviews compete with programming your own features itself.
 
-So now, I have three big phases: OAuth support for my API (so clients can connect over MCP), the MCP server scaffold and the MCP tools surface design.
+The only way to write good code is to have a good understanding of both the problem and the solution design. And, in code reviews, we reviewers evaluate that. We try to judge according to the quality of the solution whether the author's mental model is appropriate.
 
-  
+The thing with LLMs is that now good engineers with deep understanding of business problems and sharp design skills can produce regular code. And by regular code I mean all the nitpick kind of comments we used to leave in MRs.
 
-In a single prompt, I will tell Claude to go make both an MD file and an HTML artifact explaining how each phase will be built. I tell it to be very specifics of the code lines that he will change, new dependencies that will be introduced, behaviors that might break, how clients are gonna consume this E2E, what definitions of done are, how I want the testing to be made, how I want my commits, how I’m gonna be in the loop, and so on.
+In my opinion, after the surge of agentic programming, there are two gates I look for in a code review:
 
-  
+1. It does not break project rules, conventions or architectural patterns.
+2. The author's mental model behind the problem and solution is solid and well explained. Either by RFCs, diagrams, a hand-written merge request description or a quick sync.
 
-This is your plan prompt and it is really unique to you. Do not waste a lot of time refining it or testing thousands of skills since harnesses and models evolve so quickly all your efforts will be wasted in less than six months. Focus on crafting a simple list of requirements that are common to all your code (style, commits, testing patterns, code strategies, etc). 
+## 7. Live on production
 
-  
+A good trick after your feature goes live is to monitor it using agents itself. Connect OpenSearch, Sentry, Slack, ClickUp, PostHog, Metabase, etc. to your agent and tell it to check regularly for usage metrics, bug reports, user feedback and so on.
 
-If you feel lazy, just ask Claude to review your past commits or merge review comments and extract some of this behavior.
+## 8. References
 
-  
-
-At this step, I like to use Claude with either ultracode or effort xmax and tell Claude to spawn as many subagents as he wants. After a while, the HTML artifact will be done hopefully containing all the details that I asked.
-
-  
-
-I will start rambling mode again, put on my AirPods and start looking at the plan and pointing out things I don’t like or that are wrong. The key here is to go very direct:
-
-  
-
-“At point 1.1: Always use handler base abstraction for new routes”
-
-“At point 1.2.: Mock as little as possible in your tests”
-
-“At point 1.3.: Don’t introduce this new dependency and rather code the functionality by hand”
-
-  
-
-Often, a point will feel wrong but I won’t have a clear direction to take to solve it. So, in that case, I like to just say “At point 1.4. It feels weird having so many classes that share very similar behavior. Can you come up with 2 or 3 different ideas on how to design this layer of the code with new abstractions?”.
-
-  
-
-When I have a first pass at the plan, I tell Claude to make amendments to the plan.
-
-  
-
-A new plan comes. Same thing. Another pass, round of feedback. I like to think really deeply about the solution here. Sometimes I might go and write some pseudo code in my head.
-
-  
-
-## How you cut your pie
-
-If you've ever been tasked to cut a pie at a birthday party you know everyone has an opinion on how you should do it. Planning and scoping a complex feature is not an exception to that.
-
-  
-I like to cut my feature pies in vertical slices.
-
-  
-
-![](https://docs.google.com/u/0/docs-images-rt/APuouOfB32MT1rt1VPGdYg9CDPR1DVCFgl2LCfAmrbC-o00HwyRrz7yWqHMnoAx5aqeQ5lVVY98SfgLNc0hzevn4QSzWqMbKdufdIu50zRRIHcR7lDAbnntis5D5U4Q61mCiySyKFLy9zVyR1dlClLryF95qTXuDyXrg2KuI1mlo1VCI=s2048)
-
-  
-
-You can just ask Claude to provide you with the vertical slices itself but it's fun to do the thought experiment yourself, so you need to:
-
-  
-
-1. Visualize the whole pie. Think of the whole feature with all the details (the full MCP product, in the example).
-    
-2. [Map the scopes](https://basecamp.com/shapeup/3.3-chapter-12) (OAuth Setup, OAuth multi-merchant, OAuth consent screen, MCP server spinup, MCP server authorization, MCP tools, MCP tools auditability, etc).
-    
-3. Identify phases or slices of work you can ship by making increments at different scopes (OAuth + MCP server with 2 read tools).
-    
-
-## Implementation
-
-The easy part. At this point my mental model has been updated by the whole rambling-research-plan loop and I’ve learnt many useful insights about the problem, its constraints and the different shapes of solutions.
-
-  
-
-At this step, when the plan is solid, I just open a brand new Claude session and prompt it to “/goal Implement slice 1 of docs/[plan-XYZ.md](http://plan-xyz.md)”. I will have a global [CLAUDE.md](http://claude.md) file with my checklist of how I like my code.
-
-  
-
-My global [CLAUDE.md](http://claude.md) file looks like this:  
-  
-  
-
-1. Do not include comments unless there's a non obvious decision that cannot be explained through method or variable names.
-
-2. Work in small, atomic commits. Do not include commit descriptions unless there's something important about WHY the change was made.
-
-3. Run tests and linters on every commit.
-
-4. Test E2E following project conventions after each commit.
-
-5. Avoid ultra defensive code. When faced with a hyphotetical edge case, ask the user about it rather than implementing a super special edge case handling code.
-
-6. Use ENV vars for configurable parameters.
-
-7. Do not push to remote branches unless told explicitly.
-
-  
-  
-
-And in the [CLAUDE.md](http://claude.md) or [AGENTS.md](http://agents.md) file at the repository I’m working on, I will usually have project specific conventions. I like, for example, to spin up dedicated databases for each worktree in a shared docker container in my computer (Apple Silicon is really powerful these days and you can do dozens of logical DBs in a single container with no memory or CPU issues).
-
-  
-
-## Fighting slop
-
-After your first round of implementation on any decent-sized feature you are going to have some slop in your solution. We can define slop as low quality code.
-
-  
-
-Before opening a MR, you should open your IDE and review the code generated by the LLM as if you were reviewing a real diff request sent by a teammate. There are agentic IDEs like Warp or Orca that can fast-forward this process or you can just use something like VS Code or nvim.
-
-  
-
-At this point, I spin up voice mode again and start pointing out all the problems I see with the code focusing on slop.
-
-  
-
-Slop can be classified in two buckets:
-
-  
-
-1. Style slop: overcomplicated code, abuse of comments, shallow classes with no meaning, tests that do not test nothing, etc. E.g.: if the LLM decides to put together a lib/mcp/tools/fudo/[base.rb](http://base.rb) and a lib/mcp/tools/[base.rb](http://base.rb) and make all tools inherit from those useless base classes.
-    
-2. Functional slop: bugs or non-complete solutions to the problem. E.g. if my MCP first slice has no authorization.
-    
-
-  
-
-You fight style slop with better [CLAUDE.md](http://claude.md) or with prompting. You can have a “review” skill that checks for your different style smells and steers the model to fix them.
-
-  
-
-Functional slop is much harder to fight because it means your plan has a mental model gap. The good thing is that if you’ve done your rambling-research-plan loop well enough, you will spot these problems right away.
-
-  
-
-## Updating your mental model to the cloud
-
-When you are done with the code, it is always a good idea to automate the whole E2E testing. I always tell Claude to record a video of himself testing the feature whether it is by using CURL over an API or navigating a browser with Playwright and put that evidence into an HTML artifact.
-
-  
-
-I just take a final look at it to verify, and then I open the MR(s).
-
-  
-
-We’ve automated the whole process by using LLMs while learning a lot about the problem and developing a mental model around it that will compound over the next slices we’ll ship and throughout the next few years we’ll have to maintain the feature.
-
-  
-
-But before you go, don’t forget to upload your mental model to the cloud (e.g. share the knowledge with the rest of the team). In engineering orgs knowledge is usually shared in code reviews or RFCs. If there’s a stage in the whole loop where you should invest in doing your own writing and communication is in feature descriptions, RFCs or even MRs descriptions.  
-  
-If you have understood the problem well enough (and, hopefully, the solution) you should be able to put together a decent description of the problem, the mental model around it, the solution you chose and its tradeoffs. Craft a decent two or three paragraphs about it and make sure your team invests 10 minutes in reading it.
-
-  
-
-You can include an appendix with LLM-style documentation where all low level details are referenced.
-
-  
-
-If you can’t write a one-pager by hand, it means you probably need to reupdate your mental model.
-
-## Keeping the house tidy
-
-After you ship the feature, you are going to have to do lots of operations work to make sure it works, it behaves as expected, users are happy, your requirements are understood well, performance is between thresholds, and so on.
-
-  
-
-Connect your agentic harness to your observability tools, OpenSearch, Langfuse, Grafana, Sentry or even Slack or ClickUp to get feedback. Setup a scheduled task to run once a day based to proactively find exceptions, bugs, slow queries or user complaints and triage them eagerly.
-
-  
-
-## Keep updates coming
-
-Now you have a loop. Not a bullshit engineering loop technique but a mental model loop where you understand a domain and can iterate the next slices of the solution quicker.
-
-  
-
-If you invest the time upfront, after you ship the first slice you can ship the next slices or feedback and iterations changes very quickly, maybe tons of them a day coded with Claude between meetings.
-
-  
-
-And you can do it because you:
-
-  
-
-1. Used voice to ramble about a problem and let your thoughts swarm up.
-    
-2. Leveraged AI to organize your thoughts, find gaps and inconsistencies and show you facts and information about the domain and technologies involved.
-    
-3. Carved out a model out of the problem and solution with constraints.
-    
-4. Transformed that model into scopes.
-    
-5. Mapped those scopes into slices.
-    
-6. Planned those slices to the code level.
-    
-7. Implemented, shipped and observed those changes live in prod.
-    
-
-  
-
-In this graph, nodes are automated with LLMs while edges remain human. You steer the model through the graph not because the model essentially needs it (that it does), but because you as a human need to build the mental model around the system.
-
-**
+1. HumanLayer blog and all Dex Horthy's work on Context Engineering.
+2. [Agentic programming by Martin Fowler](https://martinfowler.com/bliki/AgenticProgramming.html)
