@@ -1,31 +1,38 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Nacho Morales</title>
-    <link>https://work.ignaciomorales.ar/</link>
-    <description>Notes on engineering management and building with agents.</description>
-    <language>en</language>
-    <atom:link href="https://work.ignaciomorales.ar/feed.xml" rel="self" type="application/rss+xml"/>
-    <item>
-      <title>How to build software in this new era</title>
-      <link>https://work.ignaciomorales.ar/posts/how-to-build-software-in-this-new-era</link>
-      <guid isPermaLink="true">https://work.ignaciomorales.ar/posts/how-to-build-software-in-this-new-era</guid>
-      <pubDate>Mon, 17 Aug 2026 18:00:00 -0300</pubDate>
-      <description>Eleven steps and the prompts I actually type, with the diagrams to match.</description>
-    </item>
-    <item>
-      <title>You still have to think</title>
-      <link>https://work.ignaciomorales.ar/posts/you-still-have-to-think</link>
-      <guid isPermaLink="true">https://work.ignaciomorales.ar/posts/you-still-have-to-think</guid>
-      <pubDate>Mon, 17 Aug 2026 17:00:00 -0300</pubDate>
-      <description>Mental models, rambling, slop, and why the edges of the loop stay human.</description>
-    </item>
-    <item>
-      <title>Hello world</title>
-      <link>https://work.ignaciomorales.ar/posts/hello-world</link>
-      <guid isPermaLink="true">https://work.ignaciomorales.ar/posts/hello-world</guid>
-      <pubDate>Mon, 17 Aug 2026 12:00:00 -0300</pubDate>
-      <description>The template post. Every element this blog styles, on one page.</description>
-    </item>
-  </channel>
+	<channel>
+		<title>Nacho Morales</title>
+		<link>https://work.ignaciomorales.ar/</link>
+		<description>Recent content on Nacho Morales</description>
+		<generator>Hugo</generator>
+		<language>en-us</language>
+		
+		
+		
+		
+			<lastBuildDate>Mon, 17 Aug 2026 00:00:00 +0000</lastBuildDate>
+		
+			<atom:link href="https://work.ignaciomorales.ar/feed.xml" rel="self" type="application/rss+xml" />
+			<item>
+				<title>Hello world</title>
+				<link>https://work.ignaciomorales.ar/posts/hello-world/</link>
+				<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://work.ignaciomorales.ar/posts/hello-world/</guid>
+				<description>&lt;p&gt;This is the template post. Copy this file, change the slug, and delete what you do not need. It carries every element the stylesheet knows how to render, so you can see the shape before you write.&lt;/p&gt;&#xA;&lt;h2 id=&#34;a-section-heading&#34;&gt;A section heading&lt;/h2&gt;&#xA;&lt;p&gt;Body copy is a serif, the chrome is a sans, and dates and code are mono. Links are a near black underline instead of a colored accent, so a paragraph full of them still reads as a paragraph. Inline code looks like &lt;code&gt;try_files $uri $uri.html&lt;/code&gt; and never like a link.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>How I build software</title>
+				<link>https://work.ignaciomorales.ar/posts/how-i-build-software/</link>
+				<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://work.ignaciomorales.ar/posts/how-i-build-software/</guid>
+				<description>&lt;p&gt;Since Claude Code became a thing in my day to day around June 2025, my workflow has gone through many changes on a monthly basis.&lt;/p&gt;&#xA;&lt;h2 id=&#34;0-the-mental-model&#34;&gt;0. The mental model&lt;/h2&gt;&#xA;&lt;p&gt;Mental models are a really simple thing: how you represent reality in your mind. How you, essentially, carve the important things out of a problem and ignore the redundant parts.&lt;/p&gt;&#xA;&lt;p&gt;Your mental model or, more importantly, the shared mental model of your team or company about a given reality (customer problem, market goal, competitor dominance, technology stack, etc.) is the only thing that matters. AI can blast you with an infinite number of generated artifacts, but if you don’t internalize the model yourself you will never be able to leverage AI.&lt;/p&gt;</description>
+			</item>
+			<item>
+				<title>You still have to think</title>
+				<link>https://work.ignaciomorales.ar/posts/you-still-have-to-think/</link>
+				<pubDate>Mon, 17 Aug 2026 00:00:00 +0000</pubDate>
+				<guid>https://work.ignaciomorales.ar/posts/you-still-have-to-think/</guid>
+				<description>&lt;p&gt;Since Claude Code became a thing in my day to day around June 2025, my workflow has gone through many changes on a monthly basis.&lt;/p&gt;&#xA;&lt;p&gt;The old way of working is dead and there are some new recipes which become key for the AI new world.&lt;/p&gt;&#xA;&lt;h2 id=&#34;the-mental-model&#34;&gt;The mental model&lt;/h2&gt;&#xA;&lt;p&gt;Before I get started on my work recipes for the age of AI, I want to go back to the fundamentals of intellectual work and remind you of mental models.&lt;/p&gt;</description>
+			</item>
+	</channel>
 </rss>

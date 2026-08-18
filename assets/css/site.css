@@ -1,0 +1,585 @@
+/* work.ignaciomorales.ar
+ *
+ * terminal-css by panr (https://panr.github.io/terminal-css/), vendored below
+ * unchanged, plus the tokens and the post furniture this site needs.
+ * Light and dark come from the OS. No toggle, no JavaScript.
+ */
+
+/* ------------------------------------------------------------------ tokens */
+
+:root {
+  --background: #f6f2e7;
+  --foreground: #1a170f;
+  --accent: #8a5e00;
+  --font-size: 1rem;
+  --line-height: 1.54em;
+  --radius: 0px;
+  --measure: 46rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a170f;
+    --foreground: #eceae5;
+    --accent: #eec35e;
+  }
+}
+/* [[ FONT ]] */
+
+/* [[ VARIABLES ]] */
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family:
+    "Fira Code",
+    "JetBrains Mono",
+    Monaco,
+    Consolas,
+     "Ubuntu Mono",
+    monospace;
+  font-size: var(--font-size);
+  font-weight: 400;
+  line-height: var(--line-height);
+  background-color: var(--background);
+  color: var(--foreground);
+  text-rendering: optimizeLegibility;
+  font-variant-ligatures: contextual;
+  -webkit-overflow-scrolling: touch;
+  -webkit-text-size-adjust: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* [[ HEADING ]] */
+
+h1, h2, h3, h4, h5, h6,
+p, ul, ol,
+img, figure, video,
+table {
+  margin: 25px 0;
+}
+
+a {
+  color: var(--accent);
+}
+
+button {
+  position: relative;
+  font: inherit;
+  font-weight: bold;
+  text-decoration: none;
+  text-align: center;
+  background: transparent;
+  color: var(--accent);
+  padding: 5px 18px;
+  border: 4px solid var(--accent);
+  border-radius: var(--radius);
+  transition: background 0.15s linear;
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+}
+
+button:hover {
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+fieldset {
+  display: inline-block;
+  border: 2px solid var(--foreground);
+  border-radius: calc(var(--radius) * 1.6);
+  padding: 10px;
+}
+
+fieldset *:first-child {
+  margin-top: 0;
+}
+
+fieldset input,
+fieldset select,
+fieldset textarea,
+fieldset label,
+fieldset button {
+  margin-top: calc(var(--line-height) * 0.5);
+  width: 100%;
+}
+
+label {
+  display: inline-block;
+}
+
+label input {
+  margin-top: 0;
+}
+
+input,
+textarea,
+select {
+  background: transparent;
+  color: var(--foreground);
+  border: 1px solid var(--foreground);
+  border-radius: var(--radius);
+  padding: 10px;
+  font: inherit;
+  appearance: none;
+}
+
+input[type="checkbox"] {
+  width: auto;
+}
+
+input:focus-visible,
+input:active,
+textarea:focus-visible,
+textarea:active,
+select:focus-visible,
+select:active {
+  border-color: var(--accent);
+  outline: 1px solid var(--accent);
+  outline-offset: 2px;
+}
+
+input:active,
+textarea:active,
+select:active {
+  box-shadow: none;
+}
+
+select {
+  background-image: linear-gradient(
+      45deg,
+      transparent 50%,
+      var(--foreground) 50%
+    ),
+    linear-gradient(135deg, var(--foreground) 50%, transparent 50%);
+  background-position: calc(100% - 20px), calc(100% - 15px);
+  background-size:
+    5px 5px,
+    5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 40px;
+}
+
+select option {
+  background: var(--background);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  vertical-align: middle;
+  padding: 10px;
+  box-shadow: inset 0 0 0 3px var(--background);
+}
+
+input[type="radio"] {
+  display: inline-block;
+  width: 10px !important;
+  height: 10px !important;
+  border-radius: 20px;
+}
+
+input[type="checkbox"]:checked,
+input[type="radio"]:checked {
+  background: var(--accent);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  border: 8px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 8px;
+  overflow: hidden;
+}
+
+figure img,
+figure video {
+  margin-bottom: 0;
+}
+
+figure figcaption {
+  background: var(--accent);
+  color: var(--background);
+  text-align: center;
+  font-size: 1em;
+  font-weight: normal;
+  margin-top: -8px;
+  border-radius: 0 0 var(--radius) var(--radius);
+}
+
+ul,
+ol {
+  margin-left: 4ch;
+  padding: 0;
+}
+
+ul ul,
+ul ol,
+ol ul,
+ol ol {
+  margin-top: 0;
+}
+
+li::marker {
+  color: var(--accent);
+}
+
+ul li,
+ol li {
+  position: relative;
+}
+
+code,
+kbd {
+  font-family:
+    "Fira Code",
+    "JetBrains Mono",
+    Monaco,
+    Consolas,
+    Ubuntu Mono,
+    monospace !important;
+  font-feature-settings: normal;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent);
+  color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
+  padding: 0 6px;
+  margin: 0 2px;
+  font-size: 0.95em;
+}
+
+code {
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+}
+
+kbd {
+  border-top: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  border-left: 1px solid var(--accent);
+  border-right: 1px solid var(--accent);
+  border-bottom: 4px solid var(--accent);
+  border-radius: 4px;
+}
+
+code code {
+  background: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+pre {
+  tab-size: 4;
+  background: color-mix(in srgb, var(--foreground) 5%, transparent) !important;
+  color: color-mix(in srgb, var(--foreground) 5%, var(--accent));
+  padding: 20px 10px;
+  font-size: 0.95em !important;
+  overflow: auto;
+  border-radius: var(--radius);
+  border: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+}
+
+pre code {
+  background: none !important;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+  border: none;
+}
+
+sup {
+  line-height: 0;
+}
+
+abbr {
+  position: relative;
+  text-decoration-style: wavy;
+  text-decoration-color: var(--accent);
+  cursor: help;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.25em;
+}
+
+mark {
+  background: color-mix(in srgb, var(--accent) 45%, transparent);
+  color: var(--foreground);
+}
+
+blockquote {
+  position: relative;
+  border-top: 1px solid var(--accent);
+  border-bottom: 1px solid var(--accent);
+  margin: 0;
+  padding: 25px;
+}
+
+blockquote:before {
+  content: ">";
+  display: block;
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+blockquote p:first-child {
+  margin-top: 0;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+table {
+  table-layout: auto;
+  border-collapse: collapse;
+}
+
+table,
+th,
+td {
+  border: 2px solid var(--foreground);
+  padding: 10px;
+}
+
+th {
+  border-style: solid;
+  color: var(--foreground);
+  text-align: left;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+hr {
+  width: 100%;
+  border: none;
+  background: var(--accent);
+  height: 2px;
+}
+
+/* Bold elements */
+
+h1, h2, h3, h4, h5, h6,
+b, strong,
+th,
+button {
+  font-weight: 600;
+}
+
+
+/* ============================================================ site furniture
+ * Everything below is this site, not the theme.
+ */
+
+body {
+  max-width: var(--measure);
+  margin: 0 auto;
+  padding: 3rem 1.2rem 6rem;
+}
+
+header.site {
+  margin-bottom: 3rem;
+}
+
+.wordmark {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.wordmark::before {
+  content: "$ ";
+  color: color-mix(in srgb, var(--foreground) 45%, transparent);
+}
+
+/* The block cursor after the name. It is the whole point of a terminal theme. */
+.cursor {
+  display: inline-block;
+  width: 0.6em;
+  height: 1em;
+  margin-left: 0.15em;
+  vertical-align: text-bottom;
+  background: var(--accent);
+  animation: blink 1.2s steps(1) infinite;
+}
+
+@keyframes blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor { animation: none; }
+}
+
+.tagline {
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  margin: 0.6rem 0 0;
+}
+
+footer.site {
+  margin-top: 4rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 25%, transparent);
+  font-size: 0.9rem;
+}
+
+article header time,
+.posts time {
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+  font-size: 0.85rem;
+}
+
+article header h1 { margin-bottom: 0.2rem; }
+
+/* ------------------------------------------------------------------- index */
+
+ul.posts {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.posts li {
+  display: grid;
+  grid-template-columns: 7ch 1fr;
+  gap: 0.2rem 1.5ch;
+  margin: 0 0 1.6rem;
+}
+
+ul.posts time { grid-column: 1; padding-top: 0.25rem; }
+ul.posts a { grid-column: 2; font-weight: 600; }
+
+ul.posts p {
+  grid-column: 2;
+  margin: 0;
+  color: color-mix(in srgb, var(--foreground) 70%, transparent);
+  font-size: 0.92rem;
+}
+
+/* -------------------------------------------------------- post furniture */
+
+section.step {
+  margin: 3rem 0 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid color-mix(in srgb, var(--foreground) 20%, transparent);
+}
+
+section.step .num {
+  margin: 0;
+  color: var(--accent);
+  font-size: 0.85rem;
+}
+
+section.step .num::before { content: "["; }
+section.step .num::after { content: "]"; }
+
+section.step h2 { margin-top: 0.3rem; }
+
+/* A real prompt from a session. The chip says when it was typed. */
+.example {
+  margin: 25px 0;
+  padding-left: 1.5ch;
+  border-left: 2px solid color-mix(in srgb, var(--accent) 45%, transparent);
+}
+
+.example .chip {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+}
+
+.example blockquote {
+  border: none;
+  padding: 0.6rem 0 0.6rem 2ch;
+  margin: 0.5rem 0;
+}
+
+.example blockquote::before { top: 0.6rem; }
+
+.example p:last-child {
+  color: color-mix(in srgb, var(--foreground) 75%, transparent);
+  font-size: 0.94rem;
+}
+
+.done, .warnbox {
+  margin: 25px 0;
+  padding: 12px 15px;
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.done b {
+  display: block;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.done p, .warnbox p { margin: 0.3rem 0 0; }
+
+.warnbox::before {
+  content: "! ";
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.warnbox { display: flow-root; }
+
+.card {
+  margin: 25px 0;
+  padding: 15px 20px;
+  border: 2px solid color-mix(in srgb, var(--foreground) 30%, transparent);
+}
+
+.card h3 { margin-top: 0; }
+.card ol { margin-bottom: 0; }
+
+/* --------------------------------------------------------------- diagrams */
+
+figure { margin: 25px 0; }
+
+figure img {
+  border-width: 4px;
+  padding: 4px;
+}
+
+figcaption .src {
+  display: block;
+  font-size: 0.78rem;
+  opacity: 0.75;
+}
+
+/* One SVG per theme, swapped by the OS setting. */
+.fig-dark { display: none; }
+
+@media (prefers-color-scheme: dark) {
+  .fig-light { display: none; }
+  .fig-dark { display: block; }
+}
+
+/* Wide things scroll inside themselves, never the page. */
+table { display: block; overflow-x: auto; }
+
+@media (max-width: 34rem) {
+  ul.posts li { grid-template-columns: 1fr; }
+  ul.posts a, ul.posts p { grid-column: 1; }
+  body { padding: 2rem 1rem 4rem; }
+}

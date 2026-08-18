@@ -1,0 +1,29 @@
+baseURL = "https://work.ignaciomorales.ar/"
+locale = "en-us"
+title = "Nacho Morales"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term"]
+
+[params]
+  description = "Notes on engineering management and building with agents."
+  github = "https://github.com/ijmorales"
+
+# The feed keeps its old path, so nobody's reader breaks.
+[outputFormats.RSS]
+  baseName = "feed"
+
+[markup.goldmark.renderer]
+  # The shortcodes emit HTML, and some posts carry raw HTML.
+  unsafe = true
+
+[markup.goldmark.extensions.typographer]
+  # Off on purpose: it turns -- into an en dash and quotes into curly ones.
+  disable = true
+
+[markup.highlight]
+  noClasses = false
+  guessSyntax = false
+
+[markup.tableOfContents]
+  startLevel = 2
+  endLevel = 3

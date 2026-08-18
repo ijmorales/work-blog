@@ -1,0 +1,6 @@
+{{- /* A numbered step. Inner content arrives already rendered as markdown. */ -}}
+<section class="step">
+  <p class="num">{{ .Get "num" }}</p>
+  <h2 id="{{ .Get "title" | urlize }}">{{ .Get "title" }}</h2>
+  {{ .Inner }}
+</section>

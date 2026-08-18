@@ -1,4 +1,7 @@
 .git
 .gitignore
-.DS_Store
+.obsidian
+public
+resources
 README.md
+.DS_Store

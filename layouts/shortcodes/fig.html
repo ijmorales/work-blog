@@ -1,0 +1,7 @@
+{{- $name := .Get "name" -}}
+{{- $caption := .Get "caption" -}}
+<figure>
+  <img class="fig-light" src="/img/{{ $name }}-light.svg" alt="{{ $caption }}" loading="lazy">
+  <img class="fig-dark" src="/img/{{ $name }}-dark.svg" alt="{{ $caption }}" loading="lazy">
+  <figcaption>{{ $caption }}<span class="src">Drawn in Excalidraw. Drop the SVG into excalidraw.com to edit it.</span></figcaption>
+</figure>
