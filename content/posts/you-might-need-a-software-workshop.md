@@ -60,9 +60,9 @@ So, to go back to Antonio’s model, I would say that **a level before agentic s
 
 A factory turns requirements into software with no human in the loop. In a workshop, the engineer still owns the [mental model](/posts/how-i-build-software/) and keeps the tools within reach.
 
-Most of these tools give everyone what my best engineer had: a quick way to verify a change.
+## How I would build my agentic workshop today
 
-How I would build my agentic workshop today:
+Most of these tools give everyone what my best engineer had: a quick way to verify a change.
 
 ### Background agents
 
@@ -86,6 +86,12 @@ This can be baked into your own background agents by the way.
 ### Really good CI pipelines
 
 Invest time optimizing your CI, make your tests run in parallel as much as you can, remove bloated tests (e.g. unit tests might no longer be relevant) and experiment with new ways of E2E testing your whole system.
+
+### Architecture linters
+
+If you want to limit the dependencies between different parts of your application, just enforce those boundaries in your CI. There are good tools in every language. For Ruby, we’ve been using this one: [ArchSpec](https://archspecrb.dev/).
+
+![ArchSpec rules in Ruby: controllers can only use models and services, models cannot use controllers, services cannot call render or redirect_to](/img/archspec-boundaries.png)
 
 ### Third-party mock servers
 
@@ -121,5 +127,6 @@ Go back to Antonio’s whiteboard. Most teams sit somewhere between Claude Code 
 6. [Claude Tag, Claude Code in Slack](https://code.claude.com/docs/en/slack)
 7. [OpenCode](https://opencode.ai/)
 8. [Cloudflare Workers](https://developers.cloudflare.com/workers/), plus [Agents](https://developers.cloudflare.com/agents/) and [Sandboxes](https://developers.cloudflare.com/sandbox/) to run agents on it
-9. [Pi Durable](https://earendil.com/posts/pi-durable/), Earendil
-10. My AI-shed: [Ubuntu Server](https://ubuntu.com/download/server), [Tailscale](https://tailscale.com/) and [Grafana](https://grafana.com/)
+9. [ArchSpec](https://archspecrb.dev/), architecture linter for Ruby and Rails
+10. [Pi Durable](https://earendil.com/posts/pi-durable/), Earendil
+11. My AI-shed: [Ubuntu Server](https://ubuntu.com/download/server), [Tailscale](https://tailscale.com/) and [Grafana](https://grafana.com/)
