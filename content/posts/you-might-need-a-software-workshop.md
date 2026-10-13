@@ -34,23 +34,17 @@ Months went by and the buzzword was slop. Everyone was full of slop, tech debt, 
 
 So it became clear that dark software factories were not possible, or at least not the way most folks were building them, just basically setting one builder agent and one reviewer agent and making them ship to prod in a loop.
 
-## What I realized about good engineers
+## What I realized about effective engineers
 
-As an engineering manager, I have a deep curiosity about what makes a good engineer. Of course, raw intelligence is always a part of the recipe but sometimes smarter engineers are outpaced by just regular guys who really know their stuff. I measure impact as a function of both speed and quality. And speed, when working with business requirements, is really important. You need to be first to the market or you will never make it, at least in the industries I’ve worked in.
+As an engineering manager, I have a deep curiosity about what makes an effective engineer. I measure impact as a function of both speed and quality.
 
-So, a few years ago, the 10x engineers were basically the ones shipping code with more confidence. A regular guy would set up the environment locally, test everything e2e and then open the PR. My best engineer was not doing that. He developed a mental model of the codebase and just shipped straight to sandbox (in the best of cases). His unit tests were good and his code was clean. He was shipping in ⅕ of the time without breaking anything.
+So, a few years ago, the 10x engineers were basically the ones shipping code with more confidence. A regular guy would set up the environment locally, test everything e2e and then open the PR. The best engineers were not doing that. They developed a mental model of the codebase and just shipped straight to sandbox (in the best of cases). They were shipping in ⅕ of the time without breaking anything.
 
-He had a way of verifying his changes quicker than the other engineers. This was half intuition, something embedded in his mental model of the codebase, and half really good unit and integration test tactics.
+They had a way of verifying their changes quicker than the other engineers. This was half intuition and half really good unit and integration test tactics.
 
-**So, to put it in basic terms, how fast you change production is a function of your confidence in the change.** The confidence of a change is a function of many things, such as:
+**So, to put it in basic terms, how fast you change production is a function of your confidence in the change.** The confidence of a change depends on its impact, reversibility, observability and verifiability, plus psychological factors like expertise, self-esteem and culture.
 
-1. Impact (greenfield vs brownfield, regulated vs non-regulated, etc.)
-2. Reversibility
-3. Observability
-4. Verifiability
-5. Psychological factors (level of expertise, self-esteem, culture, etc.)
-
-**Good engineers are confident not because they live in YOLO mode but because they have learned to predict the impact a change will have on the system.**
+**Effective engineers are confident not because they live in YOLO mode but because they have learned to predict the impact a change will have on the system.**
 
 ## Before the software factory, build your workshop
 
@@ -62,7 +56,7 @@ A factory turns requirements into software with no human in the loop. In a works
 
 ## How I would build my agentic workshop today
 
-Most of these tools give everyone what my best engineer had: a quick way to verify a change.
+Most of these tools give everyone what the best engineers had: a quick way to verify a change.
 
 ### Background agents
 
