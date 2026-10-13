@@ -27,5 +27,15 @@
   <a href="{{ site.Params.github }}">GitHub</a>
 </footer>
 
+{{- /* Only a page with a tweet gets JavaScript. widgets.js reads data-theme once,
+       so set it from the OS first, before the async script can run. */}}
+{{ if .HasShortcode "tweet" }}
+<script>
+if (matchMedia("(prefers-color-scheme: dark)").matches)
+  for (const q of document.querySelectorAll("blockquote.twitter-tweet")) q.dataset.theme = "dark";
+</script>
+<script async src="https://platform.twitter.com/widgets.js"></script>
+{{ end }}
+
 </body>
 </html>

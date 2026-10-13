@@ -1,12 +1,12 @@
 # work.ignaciomorales.ar
 
-Hugo site, terminal theme, no JavaScript, no tracking. Coolify builds the image
-on push and nginx serves it.
+Hugo site, terminal theme, no tracking. No JavaScript either, except on posts
+that embed a tweet. Coolify builds the image on push and nginx serves it.
 
 ```
 content/posts/*.md      # the posts
 layouts/                # baseof, home, single, list, 404
-layouts/shortcodes/     # step, example, done, warn, card, fig
+layouts/shortcodes/     # step, example, done, warn, card, fig, tweet
 assets/css/site.css     # terminal-css by panr, vendored, plus this site's layer
 static/img/*.svg        # the diagrams, one per theme
 hugo.toml
@@ -50,6 +50,29 @@ The long form recipe post uses these. Plain posts need none of them.
 | `{{</* fig name="01-loop" caption="..." */>}}` | a diagram, light and dark |
 
 Code fences take `prompt` as a language when the block is a prompt you typed.
+
+### Tweets
+
+Any post can embed one. Paste the URL from the browser: x.com and twitter.com
+both work, query string and all.
+
+```
+{{< tweet "https://x.com/jack/status/20" />}}
+
+{{< tweet "https://x.com/jack/status/20" >}}
+just setting up my twttr
+{{< /tweet >}}
+```
+
+Keep the `/>` on the one line form. Without it Hugo stops the build with "must be
+closed or self-closed". The text between the tags is markdown and optional. It is
+what a reader without JavaScript sees, next to the link, so paste it when the
+tweet matters to the post.
+
+Nothing calls X at build time. A page with a tweet loads `widgets.js` from
+`platform.twitter.com` once, and only that page: the rest of the site still ships
+no JavaScript. The embed picks light or dark from the OS when the page loads, and
+`data-dnt` asks X not to track the reader.
 
 ## Diagrams
 

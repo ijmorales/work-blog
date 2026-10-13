@@ -575,6 +575,19 @@ figcaption .src {
   .fig-dark { display: block; }
 }
 
+/* ------------------------------------------------------------------ tweets */
+
+/* A post from X, as a reader without JavaScript sees it. With JavaScript,
+ * widgets.js swaps it for an iframe and this never shows. */
+blockquote.twitter-tweet { margin: 25px 0; }
+
+blockquote.twitter-tweet .via {
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--foreground) 55%, transparent);
+}
+
+blockquote.twitter-tweet .via::before { content: "-- "; }
+
 /* Wide things scroll inside themselves, never the page. */
 table { display: block; overflow-x: auto; }
 

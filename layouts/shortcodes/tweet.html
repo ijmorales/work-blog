@@ -1,0 +1,12 @@
+{{- /* A post from X. baseof loads widgets.js, which swaps this for the real embed.
+       Without JavaScript it stays a quote that links to the post. No network at build time. */ -}}
+{{- with findRESubmatch `^https?://(?:(?:www|mobile)\.)?(?:x|twitter)\.com/(\w+)/status(?:es)?/(\d+)` ($.Get 0) 1 -}}
+{{- $user := index . 0 1 -}}
+{{- $id := index . 0 2 -}}
+<blockquote class="twitter-tweet" data-dnt="true">
+  {{ with $.Inner | strings.TrimSpace }}{{ $.Page.RenderString (dict "display" "block") . }}{{ end }}
+  <p class="via"><a href="https://x.com/{{ $user }}/status/{{ $id }}">@{{ $user }} on X</a></p>
+</blockquote>
+{{- else -}}
+{{- errorf "tweet: want an x.com or twitter.com post URL, got %q. %s" ($.Get 0) $.Position -}}
+{{- end -}}
