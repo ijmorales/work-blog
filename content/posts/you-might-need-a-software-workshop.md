@@ -109,7 +109,11 @@ I’ve built mine using a Thinkpad I had laying around. It even has its own Graf
 
 ## The factory can wait
 
-Go back to Antonio’s whiteboard. Most teams sit somewhere between Claude Code and background agents, and a factory is still expensive and unproven. A workshop is how you move right on that line at a price you can pay. Every tool you add makes your engineers, and your agents, more confident in their changes. And confidence is what lets you ship fast.
+I don’t think you need a full-blown dark software factory right now. To me, it does not make economic sense to focus on that, because Amp, Devin or even the labs will solve that problem sooner or later. In that sense, I agree with Dex Horthy’s take that dark software factories are not there yet:
+
+{{< tweet "https://x.com/dexhorthy/status/2080697380379427275" />}}
+
+You can still read the code (or some artifact on top of it) and stop staring at a Claude Code session on your local machine. Until the models and harnesses are ready for factories, we should bring new machinery into the workshop that lets us build software faster, more verifiably and with higher quality.
 
 ## References
 
