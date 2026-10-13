@@ -14,7 +14,7 @@ We met with founders and engineers and asked all of them basically the same thin
 
 We polled from 2-guy startups to Google SWEs and the responses were in a similar range of “We use Claude Code/Codex a lot, still review the code, ~90% of code is auto generated”.
 
-I remember that one of the first people we met was [Antonio](https://linkedin.com/in/abmirayo) from bem.ai who explained the matter very clearly. He basically stood up, grabbed his whiteboard and drew a diagram like this:
+I remember that one of the first people we met was Antonio, who explained the matter very clearly. He basically stood up, grabbed his whiteboard and drew a diagram like this:
 
 ![A spectrum from cheap to expensive: Copilot and CodeRabbit, Claude Code, background agents, software factories](/img/agentic-spectrum.png)
 
@@ -103,10 +103,23 @@ Hate to quote DHH but another way of experimenting with devboxes is grabbing an 
 
 {{< tweet "https://x.com/dhh/status/2106755814421565495" />}}
 
+I’ve built mine using a Thinkpad I had laying around. It even has its own Grafana dash and builds over wifi. Took me 20 minutes to set it up with Ubuntu Server + Claude Code + Tailscale.
+
+![Grafana dashboard of my AI-shed: uptime, CPU, RAM, disk, temperature, battery, load and memory over the day](/img/ai-shed-grafana.png)
+
 ## The factory can wait
 
 Go back to Antonio’s whiteboard. Most teams sit somewhere between Claude Code and background agents, and a factory is still expensive and unproven. A workshop is how you move right on that line at a price you can pay. Every tool you add makes your engineers, and your agents, more confident in their changes. And confidence is what lets you ship fast.
 
 ## References
 
-1. [earendil.com/posts/pi-durable](https://earendil.com/posts/pi-durable/)
+1. [Claude Code](https://claude.com/product/claude-code) and [Codex](https://github.com/openai/codex)
+2. [GitHub Copilot](https://github.com/features/copilot) and [CodeRabbit](https://www.coderabbit.ai/)
+3. [Migrating Shop app from React Native to native](https://shopify.engineering/shop-app-migration), Shopify Engineering
+4. [Open SWE: An Open-Source Framework for Internal Coding Agents](https://www.langchain.com/blog/open-swe-an-open-source-framework-for-internal-coding-agents) and [its repo](https://github.com/langchain-ai/open-swe)
+5. [Deep Agents](https://docs.langchain.com/oss/python/deepagents/overview), the LangChain harness Open SWE is built on ([repo](https://github.com/langchain-ai/deepagents))
+6. [Claude Tag, Claude Code in Slack](https://code.claude.com/docs/en/slack)
+7. [OpenCode](https://opencode.ai/)
+8. [Cloudflare Workers](https://developers.cloudflare.com/workers/), plus [Agents](https://developers.cloudflare.com/agents/) and [Sandboxes](https://developers.cloudflare.com/sandbox/) to run agents on it
+9. [Pi Durable](https://earendil.com/posts/pi-durable/), Earendil
+10. My AI-shed: [Ubuntu Server](https://ubuntu.com/download/server), [Tailscale](https://tailscale.com/) and [Grafana](https://grafana.com/)
